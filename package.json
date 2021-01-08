@@ -1,14 +1,14 @@
 {
-  "name": "vk-conversation-statistics",
-  "version": "1.1.0",
-  "description": "Пользовательский скрипт для анализа сообщений в диалоге",
+  "name": "vk-attach-export",
+  "version": "1.2.0",
+  "description": "Выгрузка ссылок на вложения",
   "main": "build.js",
   "scripts": {
     "build": "node build.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlyInk13/vk-conversation-statistics.git"
+    "url": "git+https://github.com/Holovin/vk-attach-export.git"
   },
   "devDependencies": {
     "babel-standalone": "^6.18.2"
@@ -17,10 +17,10 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
-  "author": "Flyink13",
+  "author": "Alexander Holovin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FlyInk13/vk-conversation-statistics/issues"
+    "url": "https://github.com/Holovin/vk-attach-export/issues"
   },
-  "homepage": "https://github.com/FlyInk13/vk-conversation-statistics"
+  "homepage": "https://github.com/Holovin/vk-attach-export"
 }
