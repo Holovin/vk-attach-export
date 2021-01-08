@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Выгрузка ссылок на вложения
 // @namespace    http://vk.com/hlvn/attachexport
-// @version      1.2.0
+// @version      1.2.1
 // @description  Пользовательский скрипт для выгрузки ссылок на вложения в диалогах
 // @author       Alexander Holovin
 // @require      https://unpkg.com/react@16/umd/react.development.js
@@ -149,7 +149,7 @@ var App = function (_React$Component) {
         (message.attachments || []).forEach(function (attachment) {
           var type = attachment.type;
 
-          if (['sticker', 'video', 'gift', 'audio_message'].includes(type)) {
+          if (['sticker', 'video', 'gift', 'audio_message', 'link', 'story', 'wall', 'wall_reply', 'market', 'audio', 'poll', 'podcast', 'call'].includes(type)) {
             return;
           }
 
@@ -172,7 +172,22 @@ var App = function (_React$Component) {
             return;
           }
 
-          console.log(message);
+          if (type === 'doc') {
+            var doc = attachment.doc;
+            newLinks.push(doc.url);
+
+            return;
+          }
+
+          if (type === 'graffiti') {
+            var gf = attachment.graffiti;
+            newLinks.push(gf.url);
+
+            return;
+          }
+
+          console.log(attachment);
+          console.log(type);
         });
       });
 
@@ -327,7 +342,7 @@ var App = function (_React$Component) {
 
       return React.createElement('textarea', { onChange: handleChange,
         value: out,
-        style: { width: '95%', height: '200px', 'white-space': 'nowrap', 'overflow': 'auto' }
+        style: { width: '95%', height: '200px', whiteSpace: 'nowrap', overflow: 'auto' }
       });
     }
 

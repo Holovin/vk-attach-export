@@ -299,7 +299,8 @@ class App extends React.Component {
       (message.attachments || []).forEach(attachment => {
         const type = attachment.type;
 
-        if (['sticker', 'video', 'gift', 'audio_message'].includes(type)) {
+        if (['sticker', 'video', 'gift', 'audio_message', 'link', 'story', 'wall', 'wall_reply',
+             'market', 'audio', 'poll', 'podcast', 'call'].includes(type)) {
           return;
         }
 
@@ -322,7 +323,22 @@ class App extends React.Component {
           return;
         }
 
-        console.log(message);
+        if (type === 'doc') {
+          const doc = attachment.doc;
+          newLinks.push(doc.url);
+
+          return;
+        }
+
+        if (type === 'graffiti') {
+          const gf = attachment.graffiti;
+          newLinks.push(gf.url);
+
+          return;
+        }
+
+        console.log(attachment);
+        console.log(type);
       });
     });
 
@@ -433,7 +449,7 @@ class App extends React.Component {
     return (
         <textarea onChange={ handleChange }
                   value={ out }
-                  style={{ width: '95%', height: '200px', 'white-space': 'nowrap', 'overflow': 'auto' }}
+                  style={{ width: '95%', height: '200px', whiteSpace: 'nowrap', overflow: 'auto' }}
         >
         </textarea>
     )
